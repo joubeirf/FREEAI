@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "dvgz-shop",
+
+  // Point d'entrée produit par `opennextjs-cloudflare build`, qui traduit la
+  // sortie de Next.js en un Worker.
+  "main": ".open-next/worker.js",
+
+  // Fige le comportement du runtime : Cloudflare n'applique les changements
+  // susceptibles de casser un Worker qu'aux dates postérieures à celle-ci.
+  "compatibility_date": "2026-10-01",
+
+  // Nécessaire au SDK Stripe (modules Node comme crypto pour les webhooks).
+  "compatibility_flags": ["nodejs_compat"],
+
+  // Fichiers statiques — images, sons — servis directement par le CDN sans
+  // réveiller le Worker.
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+
+  "observability": {
+    "enabled": true
+  }
+}
