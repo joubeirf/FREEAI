@@ -3,11 +3,12 @@ import Link from "next/link";
 import { BackgroundRibbons } from "@/components/BackgroundRibbons";
 import { GlassFilter } from "@/components/GlassFilter";
 import { instagramUrl } from "@/lib/catalog";
+import { DRUMKITS_PAGE_ENABLED } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "DVGZ — La Mallette Drumkit",
-  description: "Les sons derrière les productions de DVGZ, réunis dans une seule mallette.",
+  title: "DVGZ",
+  description: "Le drop de vêtements DVGZ.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -19,10 +20,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <nav>
           <Link href="/" className="logo">DVGZ</Link>
           <div className="nav-links">
-            <a href="#malette">La mallette</a>
-            <a href="#pads">Le kit</a>
-            <a href="#bio">À propos</a>
-            <a href="#specs">Contenu</a>
+            <Link href="/">Le drop</Link>
+            {DRUMKITS_PAGE_ENABLED && <Link href="/drumkits">Drumkits</Link>}
           </div>
         </nav>
         {children}

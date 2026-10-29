@@ -1,20 +1,8 @@
 // Contenu de la boutique, repris de la version Shopify de dvgz.fr.
 
-export type Product = {
-  handle: string;
-  title: string;
-  type: "drumkit" | "tshirt";
-  priceCents: number;
-  summary: string;
-  cover: string;
-  backCover?: string;
-};
-
-export const drumkit: Product = {
-  handle: "la-mallette-drumkit",
+// Plus en vente : présenté sur la page /drumkits uniquement.
+export const drumkit = {
   title: "La Mallette Drumkit",
-  type: "drumkit",
-  priceCents: 2000,
   summary: "Les sons derrière les productions de DVGZ, réunis dans une seule mallette.",
   cover: "/images/cover.png",
   backCover: "/images/back-cover.png",
@@ -66,7 +54,3 @@ export const credits = [
 ];
 
 export const instagramUrl = "https://www.instagram.com/dvgz3050/";
-
-export function formatPrice(cents: number) {
-  return "€" + (cents / 100).toFixed(2).replace(".", ",");
-}

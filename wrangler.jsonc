@@ -20,6 +20,11 @@
     "binding": "ASSETS"
   },
 
+  // Adresse dvgz-shop.<compte>.workers.dev et adresses d'aperçu par version,
+  // activées tant que le domaine dvgz.fr n'est pas branché.
+  "workers_dev": true,
+  "preview_urls": true,
+
   "observability": {
     "enabled": true
   }

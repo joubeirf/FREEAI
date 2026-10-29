@@ -704,7 +704,8 @@
     .bio { grid-template-columns: 1fr; gap: 40px; }
     .bio-title { position: static; }
     section { padding: 100px 6vw; }
-    .nav-links { display: none; }
+    .nav-links { gap: 2px; }
+    .nav-links a { padding: 8px 10px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
