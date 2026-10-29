@@ -27,7 +27,7 @@ export default async function ProductPage({ params }: Props) {
           <div className="section-label">DVGZ — {drop.name}</div>
           <h1 className="product-title">{garment.name}</h1>
           <p className="product-page-price mono">{formatPrice(garment.priceCents)}</p>
-          <SizePicker sizes={garment.sizes} />
+          <SizePicker stock={garment.stock} />
           <ul className="product-details">
             {garment.details.map((d) => <li key={d}>{d}</li>)}
             <li>Livraison offerte en France</li>

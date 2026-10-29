@@ -3,18 +3,20 @@
 export const drop = {
   name: "ACTIF",
   tagline: "Don't nothing come to a sleeper but a dream.",
-  // Ouverture automatique des ventes (heure de Paris). PROVISOIRE : à confirmer.
+  // Ouverture automatique des ventes (heure de Paris). Date provisoire, à confirmer.
   launchAt: "2026-11-15T19:00:00+01:00",
 };
 
-export type Size = "S" | "M" | "L" | "XL";
+export const SIZES = ["S", "M", "L", "XL"] as const;
+export type Size = (typeof SIZES)[number];
 
 export type Garment = {
   handle: string;
   name: string;
   kind: string;
   priceCents: number;
-  sizes: Size[];
+  // Stock de départ par taille. Le suivi en direct arrivera avec le paiement.
+  stock: Record<Size, number>;
   front: string;
   back: string;
   details: string[];
@@ -26,7 +28,7 @@ export const garments: Garment[] = [
     name: "Hoodie Actif",
     kind: "Hoodie",
     priceCents: 5000,
-    sizes: ["S", "M", "L", "XL"],
+    stock: { S: 10, M: 10, L: 10, XL: 10 },
     front: "/images/drop/hoodie-front.webp",
     back: "/images/drop/hoodie-back.webp",
     details: ["Noir", "Logo Actif devant, citation sur la capuche", "Visuel 187 3050 au dos"],
@@ -36,7 +38,7 @@ export const garments: Garment[] = [
     name: "Long Sleeve Actif",
     kind: "Long sleeve",
     priceCents: 3000,
-    sizes: ["S", "M", "L", "XL"],
+    stock: { S: 10, M: 10, L: 10, XL: 10 },
     front: "/images/drop/longsleeve-front.webp",
     back: "/images/drop/longsleeve-back.webp",
     details: ["Noir", "Logo Actif devant", "Visuel 187 3050 et citation au dos"],

@@ -924,3 +924,6 @@
     .countdown-cell { min-width: 0; flex: 1; padding: 12px 6px 10px; }
     .countdown-value { font-size: 24px; }
   }
+
+  .size-btn:disabled { opacity: 0.35; text-decoration: line-through; cursor: not-allowed; }
+  .size-btn:disabled:hover { color: var(--text-dim); border-color: rgba(255,255,255,0.16); }
