@@ -1,7 +1,7 @@
 // Configuration du drop : date d'ouverture, pièces, prix, tailles.
 
 export const drop = {
-  name: "DROP 01",
+  name: "ACTIF",
   tagline: "Don't nothing come to a sleeper but a dream.",
   // Ouverture automatique des ventes (heure de Paris). PROVISOIRE : à confirmer.
   launchAt: "2026-11-15T19:00:00+01:00",

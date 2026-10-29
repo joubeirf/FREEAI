@@ -9,7 +9,7 @@ export default function Home() {
     <main>
       <section className="hero">
         <div className="eyebrow">DVGZ — {drop.name}</div>
-        <h1>187 3050<br /><span className="thin">LE DROP.</span></h1>
+        <h1>{drop.name}<br /><span className="thin">LE DROP.</span></h1>
         <p className="hero-sub">{drop.tagline}</p>
         <Countdown launchAt={drop.launchAt} />
         <div className="hero-cta">
