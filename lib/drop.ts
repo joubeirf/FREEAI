@@ -22,24 +22,24 @@ export type Garment = {
 
 export const garments: Garment[] = [
   {
-    handle: "hoodie-187-3050",
-    name: "Hoodie 187 3050",
+    handle: "hoodie-actif",
+    name: "Hoodie Actif",
     kind: "Hoodie",
     priceCents: 5000,
     sizes: ["S", "M", "L", "XL"],
     front: "/images/drop/hoodie-front.webp",
     back: "/images/drop/hoodie-back.webp",
-    details: ["Noir", "Logo DVGZ devant, citation sur la capuche", "Visuel 187 3050 au dos"],
+    details: ["Noir", "Logo Actif devant, citation sur la capuche", "Visuel 187 3050 au dos"],
   },
   {
-    handle: "long-sleeve-187-3050",
-    name: "Long Sleeve 187 3050",
+    handle: "long-sleeve-actif",
+    name: "Long Sleeve Actif",
     kind: "Long sleeve",
     priceCents: 3000,
     sizes: ["S", "M", "L", "XL"],
     front: "/images/drop/longsleeve-front.webp",
     back: "/images/drop/longsleeve-back.webp",
-    details: ["Noir", "Logo DVGZ devant", "Visuel 187 3050 et citation au dos"],
+    details: ["Noir", "Logo Actif devant", "Visuel 187 3050 et citation au dos"],
   },
 ];
 
