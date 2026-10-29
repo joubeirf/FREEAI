@@ -1,0 +1,39 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { ProductGallery } from "@/components/ProductGallery";
+import { SizePicker } from "@/components/SizePicker";
+import { drop, findGarment, formatPrice, garments } from "@/lib/drop";
+
+type Props = { params: Promise<{ handle: string }> };
+
+export function generateStaticParams() {
+  return garments.map((g) => ({ handle: g.handle }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const garment = findGarment((await params).handle);
+  return garment ? { title: `${garment.name} — DVGZ`, description: drop.tagline } : {};
+}
+
+export default async function ProductPage({ params }: Props) {
+  const garment = findGarment((await params).handle);
+  if (!garment) notFound();
+
+  return (
+    <main>
+      <section className="product-page">
+        <ProductGallery name={garment.name} front={garment.front} back={garment.back} />
+        <div className="product-info">
+          <div className="section-label">DVGZ — {drop.name}</div>
+          <h1 className="product-title">{garment.name}</h1>
+          <p className="product-page-price mono">{formatPrice(garment.priceCents)}</p>
+          <SizePicker sizes={garment.sizes} />
+          <ul className="product-details">
+            {garment.details.map((d) => <li key={d}>{d}</li>)}
+            <li>Livraison offerte en France</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  );
+}
