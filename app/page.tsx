@@ -1,10 +1,16 @@
+import { redirect } from "next/navigation";
+import { connection } from "next/server";
 import { Countdown } from "@/components/Countdown";
 import { UnlockForm } from "@/components/UnlockForm";
 import { instagramUrl } from "@/lib/catalog";
+import { isLaunched } from "@/lib/access";
 import { drop } from "@/lib/drop";
 
-// Page d'attente avant l'ouverture. Après le lancement, proxy.ts redirige vers /shop.
-export default function Home() {
+// Page d'attente avant l'ouverture ; une fois le drop ouvert, on file à la boutique.
+export default async function Home() {
+  await connection(); // check the clock per request, not at build time
+  if (isLaunched()) redirect("/shop");
+
   return (
     <main className="landing">
       <div className="eyebrow">DVGZ — LE DROP</div>

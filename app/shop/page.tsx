@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import { FlipPiece } from "@/components/FlipPiece";
+import { hasShopAccess } from "@/lib/access";
 import { drop, garments } from "@/lib/drop";
 
 export const metadata: Metadata = {
@@ -7,7 +9,10 @@ export const metadata: Metadata = {
   description: drop.tagline,
 };
 
-export default function ShopPage() {
+// Before the drop opens, only visitors who entered the password get in.
+export default async function ShopPage() {
+  if (!(await hasShopAccess())) redirect("/");
+
   return (
     <main>
       <header className="shop-intro">
