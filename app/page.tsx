@@ -21,20 +21,19 @@ export default function Home() {
       <Reveal className="collection" id="collection">
         <div className="section-label">{drop.name} — {garments.length} pièces</div>
         <h2 className="section-title">La collection.</h2>
-        <div className="product-grid">
-          {garments.map((g) => (
-            <Link key={g.handle} href={`/products/${g.handle}`} className="product-card">
-              <div className="product-media">
-                <img src={g.front} alt={`${g.name}, face`} className="product-img front" />
-                <img src={g.back} alt={`${g.name}, dos`} className="product-img back" loading="lazy" />
-              </div>
-              <div className="product-meta">
-                <span className="product-name">{g.name}</span>
-                <span className="product-price mono">{formatPrice(g.priceCents)}</span>
-              </div>
-            </Link>
-          ))}
-        </div>
+        {garments.map((g) => (
+          <Link key={g.handle} href={`/products/${g.handle}`} className="piece">
+            <div className="piece-shots">
+              <div className="shot"><img src={g.front} alt={`${g.name}, face`} loading="lazy" /></div>
+              <div className="shot"><img src={g.back} alt={`${g.name}, dos`} loading="lazy" /></div>
+            </div>
+            <div className="piece-meta">
+              <span className="piece-name">{g.name}</span>
+              <span className="piece-price mono">{formatPrice(g.priceCents)}</span>
+              <span className="piece-link mono">Voir la pièce →</span>
+            </div>
+          </Link>
+        ))}
       </Reveal>
     </main>
   );

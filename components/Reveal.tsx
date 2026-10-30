@@ -10,7 +10,9 @@ export function Reveal({ className, id, children }: { className: string; id: str
   useEffect(() => {
     const io = new IntersectionObserver((entries) => {
       if (entries.some((e) => e.isIntersecting)) setVisible(true);
-    }, { threshold: 0.15 });
+    // A ratio threshold never fires on sections much taller than the screen,
+    // so trigger once the top edge is 15% into the viewport instead.
+    }, { rootMargin: "0px 0px -15% 0px" });
     io.observe(ref.current!);
     return () => io.disconnect();
   }, []);

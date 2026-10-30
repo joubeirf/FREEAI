@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element -- product photos are pre-sized WebP, served as-is */
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ProductGallery } from "@/components/ProductGallery";
 import { SizePicker } from "@/components/SizePicker";
 import { drop, findGarment, formatPrice, garments } from "@/lib/drop";
 
@@ -22,7 +22,7 @@ export default async function ProductPage({ params }: Props) {
   return (
     <main>
       <section className="product-page">
-        <ProductGallery name={garment.name} front={garment.front} back={garment.back} />
+        <div className="shot front"><img src={garment.front} alt={`${garment.name}, face`} /></div>
         <div className="product-info">
           <div className="section-label">DVGZ — {drop.name}</div>
           <h1 className="product-title">{garment.name}</h1>
@@ -33,6 +33,7 @@ export default async function ProductPage({ params }: Props) {
             <li>Livraison offerte en France</li>
           </ul>
         </div>
+        <div className="shot back"><img src={garment.back} alt={`${garment.name}, dos`} loading="lazy" /></div>
       </section>
     </main>
   );
