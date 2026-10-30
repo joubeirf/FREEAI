@@ -11,6 +11,9 @@
     --accent-soft: rgba(255, 255, 255, 0.08);
     --line: rgba(255, 255, 255, 0.08);
     --glass-saturation: 1.3;
+    /* Lilas des imprimés du drop ACTIF. */
+    --violet: #e3c6e8;
+    --violet-glow: rgba(200, 150, 220, 0.22);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -767,99 +770,6 @@
     color: var(--text);
   }
 
-  /* ---------- Drop : collection ---------- */
-
-  .collection { text-align: center; }
-
-  .piece {
-    display: block;
-    margin-top: 120px;
-  }
-
-  .piece:first-of-type { margin-top: 40px; }
-
-  .piece-shots {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2vw;
-  }
-
-  .shot {
-    position: relative;
-    isolation: isolate;
-  }
-
-  /* Halo discret derrière chaque pièce, à la place d'un cadre. */
-  .shot::before {
-    content: '';
-    position: absolute;
-    inset: 12%;
-    z-index: -1;
-    background: radial-gradient(circle, rgba(255,255,255,0.07), transparent 70%);
-    filter: blur(20px);
-  }
-
-  .shot img {
-    display: block;
-    width: 100%;
-    height: auto;
-    transition: transform 0.8s cubic-bezier(.2,.7,.2,1);
-  }
-
-  .piece:hover .shot img { transform: scale(1.025); }
-
-  .piece-meta {
-    margin-top: 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .piece-name {
-    font-size: clamp(32px, 5vw, 64px);
-    font-weight: 900;
-    letter-spacing: -0.03em;
-    line-height: 1;
-  }
-
-  .piece-price { font-size: 15px; color: var(--text-dim); }
-
-  .piece-link {
-    font-size: 12px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--text-faint);
-    transition: color 0.25s ease;
-  }
-
-  .piece:hover .piece-link { color: var(--text); }
-
-  /* ---------- Fiche produit ---------- */
-
-  .product-page {
-    padding-top: 120px;
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    column-gap: 64px;
-    align-items: start;
-  }
-
-  .product-page .shot.front { grid-column: 1; grid-row: 1; }
-  .product-page .shot.back { grid-column: 1; grid-row: 2; margin-top: 40px; }
-  .product-page .product-info { grid-column: 2; grid-row: 1 / span 2; }
-
-  .product-info { position: sticky; top: 120px; }
-
-  .product-title {
-    font-size: clamp(36px, 4.5vw, 60px);
-    font-weight: 900;
-    line-height: 0.98;
-    letter-spacing: -0.03em;
-  }
-
-  .product-page-price { margin-top: 20px; font-size: 18px; color: var(--text-dim); }
-
   .size-picker { margin-top: 40px; }
 
   .size-label {
@@ -891,28 +801,218 @@
   .buy-btn:disabled { cursor: not-allowed; opacity: 0.55; }
   .buy-btn:disabled:hover { transform: none; }
 
-  .product-details {
-    margin-top: 40px;
-    list-style: none;
-    border-top: 1px solid var(--line);
-  }
-
-  .product-details li {
-    padding: 14px 0;
-    border-bottom: 1px solid var(--line);
-    font-size: 14px;
-    color: var(--text-dim);
-  }
-
   @media (max-width: 780px) {
-    .piece { margin-top: 90px; }
-    .piece-shots { grid-template-columns: 1fr; gap: 0; }
-    .product-page { display: flex; flex-direction: column; gap: 32px; padding-top: 100px; }
-    .product-page .shot.back { margin-top: 0; }
-    .product-info { position: static; }
     .countdown-cell { min-width: 0; flex: 1; padding: 12px 6px 10px; }
     .countdown-value { font-size: 24px; }
   }
 
   .size-btn:disabled { opacity: 0.35; text-decoration: line-through; cursor: not-allowed; }
   .size-btn:disabled:hover { color: var(--text-dim); border-color: rgba(255,255,255,0.16); }
+
+  /* ---------- Accueil : compte à rebours + mot de passe ---------- */
+
+  .landing {
+    position: relative;
+    z-index: 1;
+    min-height: 100svh;
+    padding: 110px 6vw 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .landing .eyebrow { color: var(--violet); }
+
+  .landing-title {
+    font-size: clamp(84px, 24vw, 280px);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--violet);
+    text-shadow: 0 0 60px var(--violet-glow), 0 0 140px var(--violet-glow);
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.2s;
+  }
+
+  .landing-quote {
+    margin-top: 20px;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--text-dim);
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.35s;
+  }
+
+  .landing .countdown-grid { justify-content: center; }
+
+  .unlock {
+    margin-top: 44px;
+    width: min(420px, 100%);
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.65s;
+  }
+
+  .unlock-input {
+    flex: 1 1 200px;
+    min-width: 0;
+    padding: 15px 22px;
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 100px;
+    background: rgba(255,255,255,0.04);
+    color: var(--text);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .unlock-input:focus { border-color: var(--violet); }
+  .unlock-input::placeholder { color: var(--text-faint); }
+
+  .unlock-btn { cursor: pointer; font-family: inherit; }
+  .unlock-btn:disabled { cursor: default; opacity: 0.55; }
+
+  .unlock-error {
+    width: 100%;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--violet);
+  }
+
+  .landing-link {
+    margin-top: 40px;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: var(--text-faint);
+    transition: color 0.25s ease;
+  }
+
+  .landing-link:hover { color: var(--violet); }
+
+  /* ---------- Shop : pièces qui se retournent au scroll ---------- */
+
+  .shop-intro {
+    position: relative;
+    z-index: 1;
+    padding: 120px 6vw 0;
+    text-align: center;
+  }
+
+  .shop-intro .eyebrow { color: var(--violet); margin-bottom: 12px; }
+
+  .shop-intro-line {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--text-faint);
+  }
+
+  section.flip-section {
+    height: 240vh;
+    padding: 0;
+    max-width: none;
+  }
+
+  .flip-sticky {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    padding: 76px 6vw 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    overflow: hidden;
+    perspective: 1800px;
+  }
+
+  /* Halo violet derrière la pièce, pour la détacher du fond noir. */
+  .flip-sticky::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 44%;
+    width: min(90vw, 760px);
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, var(--violet-glow), rgba(200,150,220,0.06) 45%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .flip-word {
+    position: absolute;
+    left: 50%;
+    top: 44%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(96px, 26vw, 360px);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(227, 198, 232, 0.28);
+    pointer-events: none;
+  }
+
+  .flip-card {
+    position: relative;
+    z-index: 1;
+    aspect-ratio: var(--ratio);
+    height: min(54svh, calc(88vw / var(--ratio)), 680px);
+    transform-style: preserve-3d;
+    transform: rotateY(var(--turn, 0deg));
+    cursor: pointer;
+    outline: none;
+  }
+
+  .flip-card.manual { transform: rotateY(0deg); transition: transform 0.8s cubic-bezier(.2,.7,.2,1); }
+  .flip-card.manual.flipped { transform: rotateY(180deg); }
+
+  .flip-face {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    filter: drop-shadow(0 30px 40px rgba(0,0,0,0.55));
+  }
+
+  .flip-back { transform: rotateY(180deg); }
+
+  .flip-info {
+    position: relative;
+    z-index: 1;
+    width: min(520px, 100%);
+  }
+
+  .flip-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  .flip-name {
+    font-size: clamp(26px, 4vw, 40px);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .flip-price { font-size: 16px; color: var(--violet); white-space: nowrap; }
+
+  .flip-info .size-picker { margin-top: 16px; }
+  .flip-info .size-label { display: none; }
+  .flip-info .size-row { justify-content: space-between; }
+  .flip-info .size-btn { flex: 1; }
+  .flip-info .buy-btn { margin-top: 12px; }
+
+  .size-btn.selected { color: var(--bg); background: var(--violet); border-color: var(--violet); }

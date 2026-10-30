@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <nav>
           <Link href="/" className="logo">DVGZ</Link>
           <div className="nav-links">
-            <Link href="/">Le drop</Link>
+            <Link href="/shop">Shop</Link>
             {DRUMKITS_PAGE_ENABLED && <Link href="/drumkits">Drumkits</Link>}
           </div>
         </nav>

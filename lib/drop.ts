@@ -19,6 +19,8 @@ export type Garment = {
   stock: Record<Size, number>;
   front: string;
   back: string;
+  // Largeur / hauteur des photos (face et dos ont le même cadrage).
+  ratio: number;
   details: string[];
 };
 
@@ -31,6 +33,7 @@ export const garments: Garment[] = [
     stock: { S: 10, M: 10, L: 10, XL: 10 },
     front: "/images/drop/hoodie-front.webp",
     back: "/images/drop/hoodie-back.webp",
+    ratio: 1282 / 1400,
     details: ["Noir", "Logo Actif devant, citation sur la capuche", "Visuel 187 3050 au dos"],
   },
   {
@@ -41,6 +44,7 @@ export const garments: Garment[] = [
     stock: { S: 10, M: 10, L: 10, XL: 10 },
     front: "/images/drop/longsleeve-front.webp",
     back: "/images/drop/longsleeve-back.webp",
+    ratio: 1400 / 1038,
     details: ["Noir", "Logo Actif devant", "Visuel 187 3050 et citation au dos"],
   },
 ];

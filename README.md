@@ -19,9 +19,18 @@ contrairement à Vercel Hobby.
 - `npm run cf:preview` : teste le site dans le moteur Cloudflare, en local.
 - `npm run cf:deploy` : construit et publie le Worker `dvgz-shop`.
 
+## Accès à la boutique avant l'ouverture
+
+Avant `launchAt` (dans `lib/drop.ts`), `/` affiche le compte à rebours et `/shop`
+demande un mot de passe. À l'heure d'ouverture, la boutique s'ouvre à tous.
+
+Le mot de passe est le secret `SHOP_PASSWORD`, à définir dans Cloudflare (Workers ›
+dvgz-shop › Settings › Variables and Secrets). En local : `.env.local`, voir `.env.example`.
+
 ## Où modifier quoi
 
-- `lib/catalog.ts` : produit, prix, contenu du kit, sons des pads, crédits.
-- `app/page.tsx` : textes et ordre des sections de la page d'accueil.
+- `lib/drop.ts` : nom du drop, date d'ouverture, pièces, prix, stock.
+- `lib/catalog.ts` : page drumkits (contenu du kit, sons des pads, crédits).
+- `app/page.tsx` : page d'attente ; `app/shop/page.tsx` : la boutique.
 - `app/globals.css` : couleurs, polices et animations (repris du thème Shopify).
 - `public/images`, `public/sounds` : visuels et extraits audio.
