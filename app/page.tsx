@@ -1,10 +1,11 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { connection } from "next/server";
 import { Countdown } from "@/components/Countdown";
-import Link from "next/link";
+import { UnlockForm } from "@/components/UnlockForm";
 import { instagramUrl } from "@/lib/catalog";
-import { isLaunched } from "@/lib/access";
-import { drop } from "@/lib/drop";
+import { isLaunched, passwordRequired } from "@/lib/access";
+import { brand, drop } from "@/lib/drop";
 
 // Page d'attente avant l'ouverture ; une fois le drop ouvert, on file à la boutique.
 export default async function Home() {
@@ -13,11 +14,16 @@ export default async function Home() {
 
   return (
     <main className="landing">
-      <div className="eyebrow">DVGZ — LE DROP</div>
+      <div className="eyebrow">{brand} — LE DROP</div>
       <h1 className="landing-title">{drop.name}</h1>
       <p className="landing-quote">{drop.tagline}</p>
       <Countdown launchAt={drop.launchAt} />
-      <Link href="/shop" className="btn-primary landing-cta">Voir la collection</Link>
+      {passwordRequired() ? (
+        <UnlockForm />
+      ) : (
+        <Link href="/shop" className="btn-primary landing-cta">Voir la collection</Link>
+      )}
+      <p className="landing-delivery mono">Précommande · {drop.delivery}</p>
       <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="landing-link mono">Instagram ↗</a>
     </main>
   );

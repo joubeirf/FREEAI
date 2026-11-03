@@ -67,7 +67,8 @@ export function FlipPiece({ garment }: { garment: Garment }) {
             <h2 className="flip-name">{garment.name}</h2>
             <span className="flip-price mono">{formatPrice(garment.priceCents)}</span>
           </div>
-          <SizePicker stock={garment.stock} />
+          <p className="flip-note mono">Précommande · toutes tailles</p>
+          <SizePicker />
         </div>
       </div>
     </section>

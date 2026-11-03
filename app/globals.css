@@ -826,7 +826,7 @@
   .landing .eyebrow { color: var(--violet); }
 
   .landing-title {
-    font-size: clamp(84px, 24vw, 280px);
+    font-size: clamp(56px, 15vw, 210px);
     font-weight: 900;
     line-height: 0.9;
     letter-spacing: -0.04em;
@@ -847,14 +847,59 @@
 
   .landing .countdown-grid { justify-content: center; }
 
+  .unlock {
+    margin-top: 44px;
+    width: min(420px, 100%);
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.65s;
+  }
+
+  .unlock-input {
+    flex: 1 1 200px;
+    min-width: 0;
+    padding: 15px 22px;
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 100px;
+    background: rgba(255,255,255,0.04);
+    color: var(--text);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .unlock-input:focus { border-color: var(--violet); }
+  .unlock-input::placeholder { color: var(--text-faint); }
+
+  .unlock-btn { cursor: pointer; font-family: inherit; }
+  .unlock-btn:disabled { cursor: default; opacity: 0.55; }
+
+  .unlock-error {
+    width: 100%;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--violet);
+  }
+
   .landing-cta {
     margin-top: 44px;
     opacity: 0;
     animation: fadeUp 0.9s ease forwards 0.65s;
   }
 
+  .landing-delivery {
+    margin-top: 22px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--text-faint);
+  }
+
   .landing-link {
-    margin-top: 40px;
+    margin-top: 28px;
     font-size: 12px;
     letter-spacing: 0.14em;
     color: var(--text-faint);
@@ -984,3 +1029,38 @@
   .flip-info .buy-btn { margin-top: 12px; }
 
   .size-btn.selected { color: var(--bg); background: var(--violet); border-color: var(--violet); }
+
+  .flip-note {
+    margin-top: 8px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+
+  .flip-info .size-row { gap: 6px; }
+  .flip-info .size-btn { min-width: 0; padding: 12px 4px; font-size: 13px; }
+
+  /* ---------- Lookbook ---------- */
+
+  section.lookbook { padding-top: 60px; }
+
+  .lookbook-label { text-align: center; color: var(--violet); margin-bottom: 32px; }
+
+  .lookbook-grid {
+    columns: 2;
+    column-gap: 16px;
+  }
+
+  .lookbook-grid img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    break-inside: avoid;
+  }
+
+  @media (max-width: 780px) {
+    .lookbook-grid { columns: 1; }
+  }
