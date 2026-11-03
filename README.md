@@ -21,11 +21,12 @@ contrairement à Vercel Hobby.
 
 ## Accès à la boutique avant l'ouverture
 
-Avant `launchAt` (dans `lib/drop.ts`), `/` affiche le compte à rebours et `/shop`
-demande un mot de passe. À l'heure d'ouverture, la boutique s'ouvre à tous.
-
-Le mot de passe est le secret `SHOP_PASSWORD`, à définir dans Cloudflare (Workers ›
-dvgz-shop › Settings › Variables and Secrets). En local : `.env.local`, voir `.env.example`.
+Avant `launchAt` (dans `lib/drop.ts`), `/shop` demande un mot de passe, puis
+s'ouvre à tous à l'heure d'ouverture. Le mot de passe est le secret
+`SHOP_PASSWORD`, à définir dans Cloudflare (Workers › dvgz-shop › Settings ›
+Variables and Secrets, type Secret) : le dépôt est public, il ne doit pas être
+écrit dans le code. Sans ce secret, la boutique reste ouverte à tous.
+En local : `.env.local`, voir `.env.example`.
 
 ## Où modifier quoi
 
