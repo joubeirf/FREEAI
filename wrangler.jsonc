@@ -25,6 +25,10 @@
   "workers_dev": true,
   "preview_urls": true,
 
+  // Garde les variables saisies dans le tableau de bord Cloudflare au lieu de
+  // les effacer à chaque déploiement (les secrets, eux, sont toujours gardés).
+  "keep_vars": true,
+
   "observability": {
     "enabled": true
   }
