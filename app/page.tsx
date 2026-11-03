@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { connection } from "next/server";
 import { Countdown } from "@/components/Countdown";
-import { UnlockForm } from "@/components/UnlockForm";
+import Link from "next/link";
 import { instagramUrl } from "@/lib/catalog";
 import { isLaunched } from "@/lib/access";
 import { drop } from "@/lib/drop";
@@ -17,7 +17,7 @@ export default async function Home() {
       <h1 className="landing-title">{drop.name}</h1>
       <p className="landing-quote">{drop.tagline}</p>
       <Countdown launchAt={drop.launchAt} />
-      <UnlockForm />
+      <Link href="/shop" className="btn-primary landing-cta">Voir la collection</Link>
       <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="landing-link mono">Instagram ↗</a>
     </main>
   );

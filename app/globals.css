@@ -847,42 +847,10 @@
 
   .landing .countdown-grid { justify-content: center; }
 
-  .unlock {
+  .landing-cta {
     margin-top: 44px;
-    width: min(420px, 100%);
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
     opacity: 0;
     animation: fadeUp 0.9s ease forwards 0.65s;
-  }
-
-  .unlock-input {
-    flex: 1 1 200px;
-    min-width: 0;
-    padding: 15px 22px;
-    border: 1px solid rgba(255,255,255,0.16);
-    border-radius: 100px;
-    background: rgba(255,255,255,0.04);
-    color: var(--text);
-    font-size: 13px;
-    letter-spacing: 0.14em;
-    outline: none;
-    transition: border-color 0.2s ease;
-  }
-
-  .unlock-input:focus { border-color: var(--violet); }
-  .unlock-input::placeholder { color: var(--text-faint); }
-
-  .unlock-btn { cursor: pointer; font-family: inherit; }
-  .unlock-btn:disabled { cursor: default; opacity: 0.55; }
-
-  .unlock-error {
-    width: 100%;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    color: var(--violet);
   }
 
   .landing-link {

@@ -19,13 +19,10 @@ contrairement à Vercel Hobby.
 - `npm run cf:preview` : teste le site dans le moteur Cloudflare, en local.
 - `npm run cf:deploy` : construit et publie le Worker `dvgz-shop`.
 
-## Accès à la boutique avant l'ouverture
+## Ouverture du drop
 
-Avant `launchAt` (dans `lib/drop.ts`), `/` affiche le compte à rebours et `/shop`
-demande un mot de passe. À l'heure d'ouverture, la boutique s'ouvre à tous.
-
-Le mot de passe est le secret `SHOP_PASSWORD`, à définir dans Cloudflare (Workers ›
-dvgz-shop › Settings › Variables and Secrets). En local : `.env.local`, voir `.env.example`.
+Avant `launchAt` (dans `lib/drop.ts`), la collection est visible sur `/shop` mais
+l'achat est bloqué. À l'heure d'ouverture, `/` mène directement à la boutique.
 
 ## Où modifier quoi
 
